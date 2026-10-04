@@ -13,7 +13,7 @@
 ![Make](https://img.shields.io/badge/Build-GNU%20Make-6a994e?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Functional-2ea44f?style=for-the-badge)
 
-**[Idea](#-the-idea)** · **[Features](#-features)** · **[Quick Start](#-quick-start)** · **[How It Works](#-how-it-works)** · **[Protocol](#-wire-protocol)** · **[Testing](#-testing)** · **[Structure](#-project-structure)**
+**[Idea](#-the-idea)** · **[Features](#-features)** · **[Dashboard](#-dashboard-preview)** · **[Quick Start](#-quick-start)** · **[How It Works](#-how-it-works)** · **[Protocol](#-wire-protocol)** · **[Testing](#-testing)** · **[Structure](#-project-structure)**
 
 </div>
 
@@ -46,11 +46,22 @@ flowchart LR
 | 📡 **Live Metrics**<br/>CPU, RAM, disk, processes, uptime, hostname, kernel | 🆔 **Persistent Identity**<br/>Stable ID like `PC-945742` per machine | 🔄 **Self-Healing Client**<br/>Retries and resumes if the server drops |
 | 📺 **Live Dashboard**<br/>Refreshing terminal table, no GUI | 🚦 **Smart Status**<br/>`NORMAL` `WARNING` `CRITICAL` `OFFLINE` | 🛑 **Graceful Shutdown**<br/>`Ctrl+C` exits cleanly |
 
+---
+
+## 📺 Dashboard Preview
+
 ```text
+╔══════════════════════════════════════════════════════════════════════════╗
+║                          LINUX SYSTEM MONITOR                            ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
 Client ID      Hostname       CPU %     Memory %    Disk %    Processes   Status
 --------------------------------------------------------------------------
 PC-945742      Ubuntu         24.2      70.7        34.1      310         WARNING
-Total Clients: 1  |  Dashboard refresh interval: 2 seconds
+
+--------------------------------------------------------------------------
+Total Clients: 1
+Dashboard refresh interval: 2 seconds
 ```
 
 ---
@@ -165,15 +176,37 @@ Metric tests passed!   Protocol test passed!
 
 ```text
 linux-system-monitor/
-├── 🟦 client/    main.cpp · ClientIdentity · NetworkClient · SystemMonitor
-├── 🟥 server/    main.cpp · Server · ClientRegistry · ClientState.h · AlertManager
-│                 Dashboard · CsvLogger · Logger · test_csv/dashboard/logger.cpp
-├── 🟩 common/    SystemData.h · Config.h · ConfigLoader · test_config.cpp
-├── ⚙️ config/    config.json
-├── 🧪 tests/     test_metrics.cpp · test_protocol.cpp
-├── 📜 logs/      metrics.csv · server.log (generated)
-├── 🗂️ data/ · 📚 docs/ · 🏗️ build/ (binaries, generated)
-└── Makefile · README.md
+├── 🟦 client/
+│   ├── main.cpp
+│   ├── ClientIdentity.{h,cpp}
+│   ├── NetworkClient.{h,cpp}
+│   └── SystemMonitor.{h,cpp}
+├── 🟥 server/
+│   ├── main.cpp
+│   ├── Server.{h,cpp}
+│   ├── ClientRegistry.{h,cpp}
+│   ├── ClientState.h
+│   ├── AlertManager.{h,cpp}
+│   ├── Dashboard.{h,cpp}
+│   ├── CsvLogger.{h,cpp}
+│   ├── Logger.{h,cpp}
+│   └── test_csv.cpp · test_dashboard.cpp · test_logger.cpp
+├── 🟩 common/
+│   ├── SystemData.h
+│   ├── Config.h
+│   ├── ConfigLoader.{h,cpp}
+│   └── test_config.cpp
+├── ⚙️ config/
+│   └── config.json
+├── 🧪 tests/
+│   ├── test_metrics.cpp
+│   └── test_protocol.cpp
+├── 📜 logs/            # metrics.csv, server.log (generated)
+├── 🗂️ data/
+├── 📚 docs/
+├── 🏗️ build/           # compiled binaries (generated)
+├── Makefile
+└── README.md
 ```
 
 ---
