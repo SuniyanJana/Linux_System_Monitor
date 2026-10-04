@@ -21,16 +21,6 @@
 
 ---
 
-```text
-  ██╗     ██╗███╗   ██╗██╗   ██╗██╗  ██╗    ███╗   ███╗ ██████╗ ███╗   ██╗
-  ██║     ██║████╗  ██║██║   ██║╚██╗██╔╝    ████╗ ████║██╔═══██╗████╗  ██║
-  ██║     ██║██╔██╗ ██║██║   ██║ ╚███╔╝     ██╔████╔██║██║   ██║██╔██╗ ██║
-  ██║     ██║██║╚██╗██║██║   ██║ ██╔██╗     ██║╚██╔╝██║██║   ██║██║╚██╗██║
-  ███████╗██║██║ ╚████║╚██████╔╝██╔╝ ██╗    ██║ ╚═╝ ██║╚██████╔╝██║ ╚████║
-  ╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝    ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
-              ▸ mission control for every Linux box you own ◂
-```
-
 ## 🎬 The Idea
 
 Most monitoring tools hide how they work behind a framework. This project does the opposite. It talks to the Linux kernel directly, builds its own wire protocol on top of raw TCP sockets, and keeps track of every machine that reports in, all in plain C++17.
