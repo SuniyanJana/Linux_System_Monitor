@@ -8,10 +8,7 @@
 
 std::mutex Logger::logMutex;
 
-
-// ============================================================
 // Write Log
-// ============================================================
 
 void Logger::writeLog(
     const std::string& level,
@@ -32,7 +29,6 @@ void Logger::writeLog(
         return;
     }
 
-
     // Get current time
 
     auto now =
@@ -40,7 +36,6 @@ void Logger::writeLog(
 
     std::time_t currentTime =
         std::chrono::system_clock::to_time_t(now);
-
 
     logFile
         << "["
@@ -58,10 +53,7 @@ void Logger::writeLog(
     logFile.close();
 }
 
-
-// ============================================================
 // INFO
-// ============================================================
 
 void Logger::info(
     const std::string& message)
@@ -69,10 +61,7 @@ void Logger::info(
     writeLog("INFO", message);
 }
 
-
-// ============================================================
 // WARNING
-// ============================================================
 
 void Logger::warning(
     const std::string& message)
@@ -80,10 +69,7 @@ void Logger::warning(
     writeLog("WARNING", message);
 }
 
-
-// ============================================================
 // ERROR
-// ============================================================
 
 void Logger::error(
     const std::string& message)
