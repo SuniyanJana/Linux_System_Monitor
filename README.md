@@ -270,13 +270,6 @@ stateDiagram-v2
     OFFLINE --> NORMAL: client reports again
 ```
 
-| Status | Meaning |
-|:---:|---|
-| 🟢 **NORMAL** | Below the warning threshold |
-| 🟡 **WARNING** | At or above the warning threshold |
-| 🔴 **CRITICAL** | At or above the critical threshold |
-| ⚫ **OFFLINE** | No data received within the heartbeat timeout |
-
 The same rule applies to CPU, memory and disk. The `AlertManager` tracks state transitions, so changes in condition are recognised, not just snapshots.
 
 ---
