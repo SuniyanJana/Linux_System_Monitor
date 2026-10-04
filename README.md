@@ -33,7 +33,7 @@ Most monitoring tools hide how they work behind a framework. This project does t
 | | |
 |---|---|
 | 🧠 **Language** | C++17 |
-| 🐧 **Platform** | Linux (Ubuntu) |
+| 🐧 **Platform** | Linux (Ubuntu recommended) |
 | 🔌 **Transport** | POSIX TCP sockets, port `5000` |
 | 📦 **Wire format** | Newline-delimited JSON ([nlohmann/json](https://github.com/nlohmann/json)) |
 | 📊 **Metrics** | CPU · Memory · Disk · Processes · Uptime · Hostname · Kernel |
@@ -221,22 +221,7 @@ timestamp,client_id,hostname,kernel_version,cpu_usage,memory_usage,disk_usage,pr
 
 ---
 
-## 🧱 Architecture
-
-```text
-┌─────────────── CLIENT ───────────────┐   ┌──────────────── SERVER ────────────────┐
-│ SystemMonitor   collect metrics      │   │ Server          accept + receive       │
-│ ClientIdentity  persistent ID        │   │ ClientRegistry  per-client state       │
-│ NetworkClient   connect / send /     │   │ AlertManager    status transitions     │
-│                 reconnect            │   │ Dashboard       live terminal UI       │
-└──────────────────────────────────────┘   │ CsvLogger       metric history         │
-                                           │ Logger          server log             │
-┌─────────────── COMMON ───────────────┐   └────────────────────────────────────────┘
-│ SystemData · Config · ConfigLoader   │
-└──────────────────────────────────────┘
-```
-
-### 📁 Project structure
+## 📁 Project Structure
 
 ```text
 linux-system-monitor/
@@ -335,17 +320,6 @@ The server should reject it and keep running.
 | **nlohmann/json** | JSON serialization and parsing |
 | **GNU Make** | Build automation |
 | **Git** | Version control |
-
----
-
-## ⚠️ Known Limitations
-
-- **Linux only.** Metrics depend on `/proc`, so it won't run on Windows or macOS.
-- **No encryption.** Traffic is plain TCP, with no TLS.
-- **No authentication.** Clients are identified by ID only.
-- **Terminal UI only.** There is no web or graphical frontend.
-- **One identity per machine.** Several client processes on the same host share one persistent ID, so the server sees them as one logical client.
-- **Config not fully wired in.** See the [Configuration](#️-configuration) note above.
 
 ---
 
