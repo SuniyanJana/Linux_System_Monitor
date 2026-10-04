@@ -33,7 +33,7 @@ Most monitoring tools hide how they work behind a framework. This project does t
 | | |
 |---|---|
 | 🧠 **Language** | C++17 |
-| 🐧 **Platform** | Linux (Ubuntu recommended) |
+| 🐧 **Platform** | Linux (Ubuntu) |
 | 🔌 **Transport** | POSIX TCP sockets, port `5000` |
 | 📦 **Wire format** | Newline-delimited JSON ([nlohmann/json](https://github.com/nlohmann/json)) |
 | 📊 **Metrics** | CPU · Memory · Disk · Processes · Uptime · Hostname · Kernel |
